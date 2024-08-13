@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace Tashkilot.Models
+namespace Labaratoriya.Models
 {
     internal class AppDbContext:DbContext
     {
@@ -8,10 +8,13 @@ namespace Tashkilot.Models
         {
             Database.EnsureCreated();
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=kadrlarDB.db");
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=OrganDB;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
-        public DbSet<Kadr> Kadrlar {  get; set; }   
+
+        public DbSet<Mijoz> Mijozlar {get; set; }   
+        public DbSet<Organ> Organlar {set; get; }
     }
 }
